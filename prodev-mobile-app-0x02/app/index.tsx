@@ -13,6 +13,9 @@ import { Stack } from "expo-router";
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
+import BgImage from "@/assets/images/background-image.png";
+import Logo from "@/assets/images/Logo.png";
+
 export default function Home() {
   const insets = useSafeAreaInsets();
 
@@ -30,7 +33,7 @@ export default function Home() {
 
       {/* Fullscreen background */}
       <ImageBackground
-        source={require("../assets/images/background-image.png")}
+        source={BgImage}
         style={styles.background}
         resizeMode="cover"
       >
@@ -41,7 +44,7 @@ export default function Home() {
           {/* ✅ Header Section (Logo + Text) */}
           <View style={styles.headerSection}>
             <View style={styles.companyLogo}>
-              <Image source={require("../assets/images/Logo.png")} />
+              <Image source={Logo} />
             </View>
 
             <View style={styles.textGroup}>
