@@ -1,20 +1,21 @@
 import { View, Text, StyleSheet } from "react-native";
-import Colors from "../../constants/Colors";
 
-export default function HomeScreen() {
+export default function App() {
   return (
     <View style={styles.container}>
-      {/* Main heading */}
-      <Text style={styles.title}>Welcome to Home Screen</Text>
+      {/* ✅ Must match EXACT wording */}
+      <Text>Entry Screen - Awesome</Text>
 
-      {/* ✅ Extra Text #1 */}
-      <Text style={styles.subtitle}>This is the first extra text.</Text>
-
-      {/* ✅ Extra Text #2 */}
-      <Text style={styles.highlight}>This is the second extra text.</Text>
-
-      {/* ✅ Extra Text #3 */}
-      <Text style={styles.footer}>This is the third extra text.</Text>
+      {/* ✅ Extra Text Components with required styles */}
+      <View>
+        <Text style={styles.largeText}>
+          Typescript is great if you practice more
+        </Text>
+        <Text style={styles.mediumText}>
+          React Native provides you a single codebase for cross platforms
+        </Text>
+        <Text style={styles.smallText}>ALX is awesome</Text>
+      </View>
     </View>
   );
 }
@@ -22,30 +23,29 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
-    alignItems: "center",
+    backgroundColor: "#90caf9",
     justifyContent: "center",
-    padding: 16,
+    alignItems: "center",
+    padding: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: Colors.primary,
-    marginBottom: 12,
+  largeText: {
+    fontSize: 30,
+    color: "#f44336",
+    marginBottom: 5,
+    fontWeight: "700",
+    fontVariant: ["small-caps"],
   },
-  subtitle: {
-    fontSize: 18,
-    color: Colors.secondary,
-    marginBottom: 8,
+  mediumText: {
+    fontSize: 20,
+    color: "#9c27b0",
+    marginBottom: 10,
+    fontWeight: "500",
+    textAlign: "right",
   },
-  highlight: {
-    fontSize: 16,
-    color: Colors.accent,
-    fontStyle: "italic",
-    marginBottom: 8,
-  },
-  footer: {
-    fontSize: 14,
-    color: Colors.text,
+  smallText: {
+    fontSize: 15,
+    color: "#2196f3",
+    fontWeight: "400",
+    textAlign: "center",
   },
 });
