@@ -1,13 +1,13 @@
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+export default function Index() {
   return (
-    <View style={styles.container}>
-      {/* ✅ Must match EXACT wording */}
-      <Text>Entry Screen - Awesome</Text>
+    <>
+      <View style={styles.container}>
+        <Text>Entry Screen - Awesome</Text>
+      </View>
 
-      {/* ✅ Extra Text Components with required styles */}
-      <View>
+      <View style={styles.container}>
         <Text style={styles.largeText}>
           Typescript is great if you practice more
         </Text>
@@ -16,17 +16,13 @@ export default function App() {
         </Text>
         <Text style={styles.smallText}>ALX is awesome</Text>
       </View>
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#90caf9",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
   },
   largeText: {
     fontSize: 30,
