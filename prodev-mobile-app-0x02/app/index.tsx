@@ -4,103 +4,69 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
-  TouchableOpacity,
-  StatusBar,
   Dimensions,
-  Platform,
+  TouchableOpacity,
 } from "react-native";
-import { Stack } from "expo-router";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
-import BgImage from "@/assets/images/background-image.png";
-import Logo from "@/assets/images/Logo.png";
-
-export default function Home() {
-  const insets = useSafeAreaInsets();
-
+export default function Index() {
   return (
-    <>
-      {/* Hide header */}
-      <Stack.Screen options={{ headerShown: false }} />
-
-      {/* Transparent Status Bar */}
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent={true}
-      />
-
-      {/* Fullscreen background */}
-      <ImageBackground
-        source={BgImage}
-        style={styles.background}
-        resizeMode="cover"
-      >
-        <SafeAreaView
-          style={styles.container}
-          edges={["top", "left", "right", "bottom"]}
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ImageBackground
+          source={require("@/assets/images/background-image.png")}
+          style={styles.background}
+          resizeMode="cover"
         >
-          {/* ✅ Header Section (Logo + Text) */}
-          <View style={styles.headerSection}>
+          <View style={styles.container}>
+            {/* ✅ Company Logo */}
             <View style={styles.companyLogo}>
-              <Image source={Logo} />
+              <Image source={require("@/assets/images/Logo.png")} />
             </View>
 
+            {/* ✅ Text Group */}
             <View style={styles.textGroup}>
               <Text style={styles.textLarge}>Find your favorite place here</Text>
-              <Text style={styles.textSmall}>The best prices for over 2</Text>
+              <Text style={styles.textSmall}>The best prices for over 2 </Text>
               <Text style={styles.textSmall}>million properties worldwide</Text>
             </View>
-          </View>
 
-          {/* ✅ Footer */}
-          <View
-            style={[
-              styles.footer,
-              { paddingBottom: insets.bottom || 20 },
-            ]}
-          >
-            <View style={styles.buttonGroup}>
-              <TouchableOpacity style={styles.button}>
-                <Text style={{ ...styles.textSmall, color: "black" }}>
-                  Join here
-                </Text>
-              </TouchableOpacity>
+            {/* ✅ Footer */}
+            <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
+              {/* Button Group */}
+              <View style={styles.buttonGroup}>
+                <TouchableOpacity style={styles.button}>
+                  <Text style={{ ...styles.textSmall, color: "black" }}>
+                    Join here
+                  </Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity style={styles.transparentButton}>
-                <Text style={styles.textSmall}>Sign In</Text>
-              </TouchableOpacity>
-            </View>
+                <TouchableOpacity style={styles.transparentButton}>
+                  <Text style={styles.textSmall}>Sign In</Text>
+                </TouchableOpacity>
+              </View>
 
-            <View style={styles.continueText}>
-              <Text style={{ color: "white" }}>Continue to home</Text>
-              <Ionicons
-                name="arrow-forward"
-                size={20}
-                color="white"
-                style={{ marginLeft: 6 }} // fallback spacing
-              />
+              {/* Navigation Prompt */}
+              <View style={{ alignItems: "center", paddingVertical: 20 }}>
+                <Text style={{ color: "white" }}>Continue to home</Text>
+              </View>
             </View>
           </View>
-        </SafeAreaView>
-      </ImageBackground>
-    </>
+        </ImageBackground>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "transparent", // ✅ removes white area
-  },
-  headerSection: {
-    paddingTop: 40,
-    alignItems: "center",
   },
   background: {
     flex: 1,
+    justifyContent: "center",
     width: "100%",
+    height: Dimensions.get("window").height,
   },
   companyLogo: {
     width: "100%",
@@ -129,7 +95,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 40,
     paddingVertical: 15,
+    paddingHorizontal: 5,
     alignItems: "center",
+    fontSize: 20,
     flex: 1,
   },
   button: {
@@ -137,7 +105,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 40,
     paddingVertical: 15,
+    paddingHorizontal: 5,
     alignItems: "center",
+    fontSize: 20,
     backgroundColor: "white",
     flex: 1,
   },
@@ -145,19 +115,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
     paddingHorizontal: 20,
-  },
-  footer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    paddingTop: 20,
-    backgroundColor: "transparent", // ✅ keep footer transparent
-  },
-  continueText: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 20,
   },
 });
